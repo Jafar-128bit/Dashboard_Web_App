@@ -1,13 +1,5 @@
 import './NormalChart.scss';
-import {
-    AreaChart,
-    Area,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    ResponsiveContainer
-} from 'recharts';
+import {Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis} from 'recharts';
 
 const data = [
     {name: "January", Total: 1200},
@@ -18,13 +10,23 @@ const data = [
     {name: "June", Total: 1700},
 ];
 
-const NormalChart = () => {
+const NormalChart = ({aspect, title}) => {
+    const aspectRatio = (options) => {
+        switch (options) {
+            case "home":
+                return 2 / 1;
+            case "singleUser":
+                return 3 / 1;
+            default:
+                return 2 / 1;
+        }
+    };
     return (
         <div className="chart">
-            <div className="chart__title">Last 6 Month (Revenue)</div>
-            <ResponsiveContainer width="100%" aspect={2/1}>
+            <div className="chart__title">{title}</div>
+            <ResponsiveContainer width="100%" aspect={aspectRatio(aspect)}>
                 <AreaChart width={730} height={250} data={data}
-                           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                           margin={{top: 10, right: 30, left: 0, bottom: 0}}>
                     <defs>
                         <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
