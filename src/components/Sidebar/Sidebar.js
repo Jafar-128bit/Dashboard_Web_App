@@ -13,21 +13,28 @@ import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 import ExitToAppRoundedIcon from '@mui/icons-material/ExitToAppRounded';
 import NightlightRoundedIcon from '@mui/icons-material/NightlightRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
+import {Link} from "react-router-dom";
 
 const Sidebar = () => {
     return (
         <div className="sidebar">
             <div className="sidebar__top">
-                <span className="sidebar__logo">Jafar Admin</span>
+                <Link to="/" style={{textDecoration: "none"}}>
+                    <span className="sidebar__logo">Jafar Admin</span>
+                </Link>
             </div>
-            <hr />
+            <hr/>
             <div className="sidebar__center">
                 <ul>
                     <p className="sidebar__title">Main</p>
                     <li> <DashboardCustomizeRoundedIcon className="sidebar__icon"/> <span>Dashboard</span></li>
                     <p className="sidebar__title">List</p>
-                    <li> <SupervisedUserCircleRoundedIcon className="sidebar__icon"/> <span>Users</span></li>
-                    <li> <ShoppingBagRoundedIcon className="sidebar__icon"/> <span>Products</span></li>
+                    <Link to="/users" style={{textDecoration:"none"}}>
+                        <li> <SupervisedUserCircleRoundedIcon className="sidebar__icon"/> <span>Users</span></li>
+                    </Link>
+                    <Link to="/products" style={{textDecoration:"none"}}>
+                        <li> <ShoppingBagRoundedIcon className="sidebar__icon"/> <span>Products</span></li>
+                    </Link>
                     <li> <SellRoundedIcon className="sidebar__icon"/> <span>Orders</span></li>
                     <li> <DeliveryDiningRoundedIcon className="sidebar__icon"/> <span>Delivery</span></li>
                     <p className="sidebar__title">Analytics</p>

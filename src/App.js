@@ -1,4 +1,5 @@
 import './App.css';
+import './style/dark.scss';
 import Home from "./pages/Home/Home";
 import {BrowserRouter, Route, Routes,} from 'react-router-dom';
 import List from "./pages/List/List";
@@ -9,7 +10,7 @@ import {productInputs, userInputs} from "./fromSource";
 
 function App() {
     return (
-        <div className="App">
+        <div className="App dark">
             <BrowserRouter>
                 <Routes>
                     <Route path='/'>
@@ -17,13 +18,13 @@ function App() {
                         <Route index element={<Home/>}/>
                         <Route path="login" element={<Login/>}/>
                         {/* User Page Route */}
-                        <Route path="user">
+                        <Route path="users">
                             <Route index element={<List/>}/>
                             <Route path=":userId" element={<Single/>}/>
                             <Route path="new" element={<New inputs={userInputs} title="Add New User"/>}/>
                         </Route>
                         {/* Product Page Route */}
-                        <Route path="product">
+                        <Route path="products">
                             <Route index element={<List/>}/>
                             <Route path=":productId" element={<Single/>}/>
                             <Route path="new" element={<New inputs={productInputs} title="Add New Product"/>}/>
